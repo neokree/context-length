@@ -1,0 +1,5 @@
+{
+  "name": "context-length",
+  "owner": { "name": "neokree" },
+  "plugins": [{ "name": "context-length", "source": "./" }]
+}

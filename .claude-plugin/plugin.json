@@ -1,0 +1,5 @@
+{
+  "name": "context-length",
+  "version": "0.1.0",
+  "description": "Gives Claude a tool that reports the current session's context window usage."
+}
