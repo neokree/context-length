@@ -2,7 +2,14 @@
 
 A Claude Code mod that lets Claude read its own context window usage.
 
-It registers one tool, `mcp__context-length__context`. The tool returns tokens used, window size, percent used and tokens left for the current session. The figures come from `$.session.usage()`, the same data as the status line, so there is no transcript parsing. They count the input tokens of the last response, and stay stale right after `/compact` until the next response.
+It does two things:
+
+- On every prompt and every tool call, it attaches a hidden line such as `[context 312k/1000k]` that Claude reads and you never see. Slash-command prompts, subagent tool calls and the tool below are skipped.
+- It registers one tool, `mcp__context-length__context`, that returns tokens used, window size, percent used, tokens left and how long the reading took (about 1 ms).
+
+The figures come from `$.session.usage()`, the same data as the status line, so there is no transcript parsing. They count the input tokens of the last response, and stay stale right after `/compact` until the next response.
+
+The mod only reports the number. Any limit, such as when to hand work off to another session, belongs to the project that installs it (for example a rule in its `MEMORY.md`).
 
 ## Install
 
